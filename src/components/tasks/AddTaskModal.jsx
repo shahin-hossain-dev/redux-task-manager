@@ -52,7 +52,7 @@ const AddTaskModal = ({ isOpen, setIsOpen }) => {
           <select
             id="assignTo"
             className="rounded w-full"
-            {...register("assignTo", { required: true })}
+            {...register("assignedTo", { required: true })}
           >
             <option defaultValue="Shahin Hossain">Shahin Hossain</option>
             <option value="Shahin Hossain">Akbor Sheikh</option>
