@@ -1,6 +1,9 @@
 import { ArrowRightIcon, TrashIcon } from "@heroicons/react/24/outline";
+import { useDispatch, useSelector } from "react-redux";
+import { updateStatus } from "../../redux/features/tasks/tasksSlice";
 
 const TaskCard = ({ task }) => {
+  const dispatch = useDispatch();
   return (
     <div className="bg-secondary/10 rounded-md p-5">
       <h1
@@ -13,7 +16,7 @@ const TaskCard = ({ task }) => {
         {task?.title}
       </h1>
       <p className="mb-3">{task?.description}</p>
-      <p className="text-sm">Assigned to - {task?.assignTo}</p>
+      <p className="text-sm">Assigned to - {task?.assignedTo}</p>
       <div className="flex justify-between mt-3">
         <p>{task?.date}</p>
         <div className="flex gap-3">
