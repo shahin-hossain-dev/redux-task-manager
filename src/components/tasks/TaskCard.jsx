@@ -8,12 +8,16 @@ import {
 const TaskCard = ({ task }) => {
   const dispatch = useDispatch();
 
+  const pending = task.status === "pending";
+  const running = task.status === "running";
+  const done = task.status === "done";
+
   let newStatus;
-  if (task.status === "pending") {
+  if (pending) {
     newStatus = "running";
-  } else if (task.status === "running") {
+  } else if (running) {
     newStatus = "done";
-  } else if (task.status === "done") {
+  } else if (done) {
     newStatus === "archive";
   }
 
@@ -21,10 +25,8 @@ const TaskCard = ({ task }) => {
     <div className="bg-secondary/10 rounded-md p-5">
       <h1
         className={`text-lg font-semibold mb-3  ${
-          task.priority === "high" ? "text-red-500" : ""
-        } ${task.priority === "medium" ? "text-yellow-500" : ""} ${
-          task.priority === "low" ? "text-green-500" : ""
-        }`}
+          pending ? "text-sky-500" : ""
+        } ${running ? "text-yellow-500" : ""} ${done ? "text-green-500" : ""}`}
       >
         {task?.title}
       </h1>
