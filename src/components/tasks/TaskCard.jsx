@@ -7,7 +7,6 @@ import {
 
 const TaskCard = ({ task }) => {
   const dispatch = useDispatch();
-
   const pending = task.status === "pending";
   const running = task.status === "running";
   const done = task.status === "done";

@@ -1,18 +1,29 @@
 import {
   CheckIcon,
   DocumentMagnifyingGlassIcon,
-} from '@heroicons/react/24/outline';
+} from "@heroicons/react/24/outline";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { userTasks } from "../../redux/features/tasks/tasksSlice";
 
 const MyTasks = () => {
+  const { tasks } = useSelector((state) => state.taskReducer);
+  const { name: userName } = useSelector((state) => state.userReducer);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(userTasks(userName));
+  }, [userName, dispatch]);
+
   const item = {
     id: 1,
-    status: 'pending',
-    title: 'Remove Button',
+    status: "pending",
+    title: "Remove Button",
     description:
-      'We need a remove button in our task card. Meke the button red and use Heroicon for tashbin icon.',
-    date: '2023-08-28',
-    assignedTo: 'Mir Hussain',
-    priority: 'high',
+      "We need a remove button in our task card. Meke the button red and use Heroicon for tashbin icon.",
+    date: "2023-08-28",
+    assignedTo: "Mir Hussain",
+    priority: "high",
   };
 
   return (
